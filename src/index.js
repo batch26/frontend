@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Landing from './components/page/landing'
+import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
+import Recover from "./components/page/recover";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Landing></Landing>
+    {/* <Recover></Recover> */}
   </React.StrictMode>
 );
 
