@@ -5,11 +5,13 @@ import App from './App';
 import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
 import Recover from "./components/page/recover";
+import ChangePassword from './components/page/changepassword';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Landing></Landing>
+    {/* <Landing></Landing> */}
+  <ChangePassword/>
     {/* <Recover></Recover> */}
   </React.StrictMode>
 );
