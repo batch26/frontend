@@ -38,13 +38,9 @@ const ChangePassword = () => {
                 setChangePassword({ oldPassword: "", newPassword: "" });
             }).catch((error) => {
                 message.error(error)
-
                 console.log(error.data)
             })
-
     }
-
-
     return (
         <div className="fix-header">
             <div id="main-wrapper">
