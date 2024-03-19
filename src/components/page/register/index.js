@@ -6,11 +6,22 @@ import RegisterForm from "../../organism/register";
 
 
 let index = () => {
+    const [input, setInput] = useState({});
+
+    const handleChanges = (e) => {
+        // const name = e.target.name
+        // const value  = e.target.value
+
+        const {name, value} = e.target
+
+        setInput({...input,[name]: value})
+    }
+
     return (
         <section id="wrapper" className="login-register login-sidebar" style={{ backgroundImage: `url("https://i.ibb.co/Ws42gtq/login-register.jpg")`}}>
             <div className="login-box card">
                 <div className="card-body">
-                    <RegisterForm />
+                    <RegisterForm handleChanges={handleChanges}/>
                 </div>
             </div>
             <script src="../../../static/bootstrap/js/bootsrap.min.js"></script>

@@ -5,23 +5,25 @@ import logote from "../../../static/images/logo-text.png";
 
 let index = () => {
 
-    let input = [
-        {
-            label: "Name",
-            type: "text",
-            name: "name"
-        },
-        {
-            label: "Email",
-            type: "text",
-            name: "email"
-        },
-        {
-            label: "Password",
-            type: "password",
-            name: "password"
-        }
-    ]
+    // console.log(props.handleChanges);
+
+    // let input = [
+    //     {
+    //         label: "Name",
+    //         type: "text",
+    //         name: "name"
+    //     },
+    //     {
+    //         label: "Email",
+    //         type: "text",
+    //         name: "email"
+    //     },
+    //     {
+    //         label: "Password",
+    //         type: "password",
+    //         name: "password"
+    //     }
+    // ]
 
     return (
         <form className="form-horizontal form-material" id="loginform" action="index.html">
