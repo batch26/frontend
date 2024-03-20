@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
-// import useMessage from "../../../hooks/useMessage"
+import useMessage from "../../../hooks/useMessage"
 
 let Index = () => {
 
@@ -10,7 +10,8 @@ let Index = () => {
 
     // const message = useMessage();
     
-    const handleInput = () => {
+    const handleInput = (e) => {
+        e.preventDefault();
             axios.post("http://localhost:8080/api/account/forgot-password", {
                 email: name,
                 password: password
@@ -19,13 +20,14 @@ let Index = () => {
             console.log(response)
             setPassword({ password });
         }).catch((error) => {
-            console.log(error)
+            // message.error(error)
+            console.log(error.response)          
         });
         
     }
 
     return (
-        <form className="form-horizontal form-material" id="loginform" action="index.html">
+        <form className="form-horizontal form-material" id="loginform">
             <h3 className="box-title m-b-20">Recover Password</h3>
             <div className="form-group">
                 <div className="col-xs-12">
@@ -42,7 +44,7 @@ let Index = () => {
             <div className="form-group text-center m-t-20">
                 <div className="col-xs-12">
                     <button className="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit"
-                    onClick={()=> handleInput()}>Reset</button>
+                    onClick={(e)=> handleInput(e)}>Reset</button>
                     
                 </div>
             </div>
