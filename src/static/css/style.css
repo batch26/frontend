@@ -1757,7 +1757,10 @@ Custom-select
 .custom-select {
   background: url(../images/calendar.png) right 0.75rem center no-repeat;
 }
-
+.card-headers {
+  background-color: white; 
+   
+}
 /* ../../assets/images/custom-select.png */
 
 /*******************
