@@ -6,14 +6,20 @@ import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
 import Recover from "./components/page/recover";
 import Login from './components/page/login';
+import { Provider } from 'react-redux';
+import store from './app/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    {/* <Landing></Landing> */}
-    {/* <Recover></Recover> */}
-    <Login></Login>
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   {/* <Landing></Landing> */}
+  //   {/* <Recover></Recover> */}
+  //   {/* <Login></Login> */}
+  // </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
