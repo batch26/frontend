@@ -256,8 +256,8 @@ let Index = () => {
 
     useEffect(() => {
         axios.post("https://worm-famous-mongoose.ngrok-free.app/api/account/authenticating", {
-            email: "nasri.sarif1@batmandiri.com",
-            password: "makanbang"
+            email: "messi@gmail.com",
+            password: "messi123"
     }).then((response) => {
         console.log()
         setDemo(response.data.data);
