@@ -7,6 +7,7 @@ let backgroundStyle = {
     backgroundImage: 'url("https://i.ibb.co/Ws42gtq/login-register.jpg")'
 };
 let index = () => {
+    
     return (
         <div>
             <section id="wrapper">

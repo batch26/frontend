@@ -17,7 +17,6 @@ const useMessage = () => {
 
   const error = (error) => {
     const {data } = error.response;
-
     Toast.fire({
       icon: "warning",
       title: data.message 

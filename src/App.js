@@ -1,14 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { decrementByAmount, incrementByAmount } from './features/counter/counterSlice'
-import { useState } from 'react';
+import { decrement, increment, incrementByAmount , decrementByAmount} from './features/counter/counterSlice'
+import { useState } from 'react'
 
 function App() {
   const count = useSelector((state) => state.counter.value)
-  const [input, setInput] = useState(0);
-
   const dispatch = useDispatch()
+  const [inputValue, setInputValue] = useState('');
 
   return (
     <div className="App">
@@ -38,6 +37,27 @@ function App() {
         >
           Learn React Basic with Amartek 3
         </a>
+        <div>
+          <div>
+            <input className="form-control" type="number" required="" value={inputValue} placeholder="" onChange={e => setInputValue(e.target.value)} />
+          </div>
+          <div>
+            <button
+              aria-label="Increment value"
+              onClick={() => dispatch(incrementByAmount(Number(inputValue)))}
+            >
+              Increment
+            </button>
+            <span>{count}</span>
+            <button
+              aria-label="Decrement value"
+              onClick={() => dispatch(decrementByAmount(Number(inputValue)))}
+              disabled = {count <= 0}
+            >
+              Decrement
+            </button>
+          </div>
+        </div>
       </header>
     </div>
   );

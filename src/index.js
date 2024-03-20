@@ -6,6 +6,7 @@ import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
 import Recover from "./components/page/recover";
 import Register from "./components/page/register"
+import ChangePassword2 from './components/page/changepassword2';
 import store from './app/store'
 import { Provider } from 'react-redux'
 
