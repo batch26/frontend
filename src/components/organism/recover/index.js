@@ -8,7 +8,7 @@ let Index = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
-    // const message = useMessage();
+    const message = useMessage();
     
     const handleInput = (e) => {
         e.preventDefault();
@@ -16,12 +16,13 @@ let Index = () => {
                 email: name,
                 password: password
         }).then((response) => {
-            // message.success(response)
+            message.success(response)
             console.log(response)
             setPassword({ password });
         }).catch((error) => {
-            // message.error(error)
-            console.log(error.response)          
+            message.error(error)
+            console.log(error.response)
+          
         });
         
     }
