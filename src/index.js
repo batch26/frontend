@@ -6,13 +6,18 @@ import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
 import Recover from "./components/page/recover";
 import Register from "./components/page/register"
+import store from './app/store'
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <Landing></Landing> */}
     {/* <Recover></Recover> */}
-    <Register></Register>
+    <Provider store={store}>
+      <App />
+      {/* <Register /> */}
+    </Provider>,
   </React.StrictMode>
 );
 

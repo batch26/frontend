@@ -4,6 +4,7 @@ import logoic from "../../../static/images/logo-icon.png";
 import logote from "../../../static/images/logo-text.png";
 import axios from "axios";
 import { useState } from "react";
+import messages from "../../../hooks/useMessage"
 
 let Index = () => {
 
@@ -12,6 +13,8 @@ let Index = () => {
         email: "",
         password: ""
     })
+
+    let message = messages()
 
     const submit = (e) => {
         e.preventDefault();
@@ -22,9 +25,11 @@ let Index = () => {
             data: register
         }).then((response) => {
             console.log(response)
+            message.success(response)
             setRegister({ name: "", email: "", password: ""});
         }).catch((error) => {
             console.log(error)
+            message.error(error)
         })
     }
 

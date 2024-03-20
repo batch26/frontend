@@ -403,7 +403,36 @@ let Index = () => {
                             </div>
                         </div>
 
-                        <Footer/>
+                        <footer className="footer row">
+                            <div className="fix-width">
+                                <div className="row">
+                                    <div className="col-lg-3 col-md-6"><img src={logolighticon} alt="logo" /> <img src={logolighttext} alt="logo" />
+                                        <p className="m-t-30">
+                                            <span className="text-white">Monster Admin</span> is premium quality admin dashboard template with flat design. It is fully responsive admin dashboard template built with Bootstrap Framework, HTML5 & CSS3, Media query. </p>
+                                    </div>
+                                    {footer.map(data => {
+                                        return (
+                                            <Footer label1={data.label1}
+                                                label2={data.label2}
+                                                label3={data.label3}
+                                                label4={data.label4}
+                                                label5={data.label5}
+                                                label6={data.label6}
+                                                label7={data.label7}
+                                                label8={data.label8}
+                                                label9={data.label9}
+                                                label10={data.label10}></Footer>
+
+                                        )
+                                    })}
+                                    <div className="clearfix"></div>
+                                    <div className="col-md-12 sub-footer">
+                                        <span>Copyright 2017. All Rights Reserved by <a className="text-white" href="https://wrappixel.com/templates/monsteradmin/" target="_blank">Monster Admin</a></span>
+                                        <span className="pull-right">Design & Developed by <a className="text-white" href="https://wrappixel.com" target="_blank">WrapPixel</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
                     </div>
                 </div>
             </div>
