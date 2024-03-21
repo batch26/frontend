@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
 import Landing from './components/page/landing';
@@ -8,14 +9,25 @@ import Recover from "./components/page/recover";
 import ChangePassword2 from './components/page/changepassword2';
 import store from './app/store'
 import { Provider } from 'react-redux'
+import Layout from './components/page/layout';
+import Dashboard from './components/page/admin/dashboard';
+import Demo from './components/page/admin/demo';
+import NotFound from './components/page/error/404';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App/>
-      {/* <Recover/> */}
-    </Provider>,
+     <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="demo" element={<Demo />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
