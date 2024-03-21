@@ -1,16 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount , decrementByAmount} from './features/counter/counterSlice'
-import { useState } from 'react'
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Admin from './components/page/layout/index.js'
+import ChangePassword2 from './components/page/changepassword2/index.js';
 function App() {
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
-  const [inputValue, setInputValue] = useState('');
 
   return (
-    <div className="App">
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Admin/>}>
+        <Route index element={<ChangePassword2/>} />
+        {/* <Route path="blogs" element={<Blogs />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NoPage />} /> */}
+      </Route>
+    </Routes>
+  </BrowserRouter>
+  );
+}
+
+export default App;
+
+{/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <form>
@@ -59,8 +69,4 @@ function App() {
           </div>
         </div>
       </header>
-    </div>
-  );
-}
-
-export default App;
+    </div> */}
