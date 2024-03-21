@@ -11,7 +11,6 @@ import store from './app/store';
 import Register from "./components/page/register"
 import ChangePassword2 from './components/page/changepassword2';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
