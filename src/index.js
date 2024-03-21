@@ -10,19 +10,26 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import Register from "./components/page/register"
 import ChangePassword2 from './components/page/changepassword2';
-import Admin from './components/page/layout'
+import Layout from './components/page/layout'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from './components/page/admin/dashboard';
+import Demo from './components/page/admin/demo';
+import NotFound from './components/page/404';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    {/* <Landing></Landing> */}
-    {/* <Recover></Recover> */}
-    {/* <Login></Login> */}
     <Provider store={store}>
-      {/* <App /> */}
-      <Admin/>
-      {/* <Register /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="demo" element={<Demo />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>,
   </React.StrictMode>
 );
