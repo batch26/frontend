@@ -1,17 +1,18 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from './components/page/layout/index.js'
-import ChangePassword2 from './components/page/changepassword2/index.js';
+import Dashboard from './components/page/admin/dashboard/index.js';
+import Demo from './components/page/admin/demo/index.js';
 function App() {
 
   return (
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Admin/>}>
-        <Route index element={<ChangePassword2/>} />
-        {/* <Route path="blogs" element={<Blogs />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<NoPage />} /> */}
+        <Route index element={<Dashboard/>} />
+        <Route path="demo" element={<Demo/>} />
+        {/* <Route path="contact" element={<Contact />} /> */}
+        {/* <Route path="*" element={<NoPage />} /> */}
       </Route>
     </Routes>
   </BrowserRouter>
