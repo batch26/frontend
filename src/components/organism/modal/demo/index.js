@@ -6,25 +6,26 @@ const ModalDemo = (props) => {
     const [data, setData] = useState({
         image: "",
         label: ""
-    })
-    let msg = useMessage()
-    const Handelchange = (e) => {
+      })
+      let msg= useMessage()
+      const Handelchange = (e) => {
         const { name, value } = e.target
-
+    
         setData({ ...data, [name]: value })
-    }
-
-    const handlesubmit = () => {
-        axios.post("http://localhost:8080/api/demo", data).then((response) => {
-            msg.success(response)
-            props.listdemo()
-            setData({ image: "", label: "" })
-            props.setShowModal(false)
-        }).catch((error) => {
-            console.log(error.response)
-            msg.error(error)
+      }
+    
+      const handlesubmit = () => {
+        axios.post("http://localhost:8080/api/demo", data).then((response)=>{
+    
+        props.listdemo()
+          msg.success(response)
+          setData({image:"", label:""})
+          props.setShowModal(false)
+    
+        }).catch((error)=>{
+          msg.error(error)
         })
-    }
+      }
     return (
         <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> {/* Menggunakan onHide untuk menutup modal saat tombol close ditekan */}
             <Modal.Header >

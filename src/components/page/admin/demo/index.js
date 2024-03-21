@@ -6,46 +6,41 @@ import ModalDemo from "../../../organism/modal/demo";
 import useMessage from "../../../hooks/useMessage";
 const Demo = () => {
 
-    const [demo, setDemo] = useState([{}])
+    const [demo, setDemo] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+    let msg = useMessage()
 
-    const [showModal, setShowModal] = useState(false);
-
-    let msg = useMessage();
-
-    const listdemo = () => {
+    const listdemo =()=>{
         axios.get("http://localhost:8080/api/demos")
-            .then((response) => {
-                console.log(response.data)
-                setDemo(response.data.data);
-            })
-            .catch((error) => {
-
-                console.log(error.response);
-            });
+        .then((response) => {
+          console.log(response.data)
+          setDemo(response.data.data);
+        })
+        .catch((error) => {
+          
+          console.log(error.response);
+        });
     }
-    
-    useEffect(() => {
+  useEffect(() => {
+   listdemo()
+  }, []);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  const deleteById = (id) => {
+    console.log("ini id",id)
+   axios.delete(`http://localhost:8080/api/demo/${id}`).then((response)=>{
+        msg.success(response)
         listdemo()
-    }, []);
-
-    const openModal = () => {
-        setShowModal(true);
-    };
-
-    const closeModal = () => {
-        setShowModal(false);
-    };
-
-    const deleteById = (id) => {
-        console.log(id)
-        axios.delete(`http://localhost:8080/api/demo/${id}`)
-            .then((response) => {
-                console.log(response)
-                msg.success(response)
-            }).catch((error) => {
-                console.log(error)
-            })
-    }
+   }).catch((error)=>{
+    msg.error(error)
+   })
+}
 
     return (
         <div className="container">
@@ -75,7 +70,7 @@ const Demo = () => {
                     ))}
                 </tbody>
             </table>
-            <ModalDemo show={showModal} closeModal={closeModal} listdemo={listdemo} showModal={setShowModal}/>
+            <ModalDemo show={showModal} closeModal={closeModal} setShowModal={setShowModal} listdemo={listdemo}/> 
         </div>
     )
 }
