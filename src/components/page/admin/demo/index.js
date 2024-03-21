@@ -9,20 +9,25 @@ import "../../../../static/admin/assets//plugins/css-chart/css-chart.css";
 import "../../../../static/admin/assets//plugins/toast-master/css/jquery.toast.css";
 import "../../../../static/admin/css/style.css";
 import "../../../../static/admin/css/colors/blue.css";
+import useMessage from "../../../hooks/useMessage";
 const Demo = () => {
   const [demo, setDemo] = useState([]);
   const [showModal, setShowModal] = useState(false);
+    let msg = useMessage()
 
+    const listdemo =()=>{
+        axios.get("http://localhost:8080/api/demos")
+        .then((response) => {
+          console.log(response.data)
+          setDemo(response.data.data);
+        })
+        .catch((error) => {
+          
+          console.log(error.response);
+        });
+    }
   useEffect(() => {
-    axios.get("http://localhost:8080/api/demos")
-      .then((response) => {
-        console.log(response.data)
-        setDemo(response.data.data);
-      })
-      .catch((error) => {
-        
-        console.log(error.response);
-      });
+   listdemo()
   }, []);
 
   const openModal = () => {
@@ -32,7 +37,15 @@ const Demo = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  const deleteById = (id) => {
+    console.log("ini id",id)
+   axios.delete(`http://localhost:8080/api/demo/${id}`).then((response)=>{
+        msg.success(response)
+        listdemo()
+   }).catch((error)=>{
+    msg.error(error)
+   })
+}
   return (
     <div className="container">
       <h1>Demo</h1>
@@ -47,21 +60,21 @@ const Demo = () => {
           </tr>
         </thead>
         <tbody>
-          {demo.map((data, index) => (
-            <tr key={index}>
+          {demo.map((data) => (
+            <tr key={data.id}>
               <td>{data.id}</td>
               <td>{data.image}</td>
               <td>{data.label}</td>
               <td>
                 <button className="btn btn-warning" onClick={() => console.log("Edit clicked")}>EDIT</button>
                 <span style={{ marginRight: '5px' }}></span>
-                <button className="btn btn-danger" onClick={() => console.log("Delete clicked")}>DELETE</button>
+                <button onClick={() => deleteById(data.id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <ModalDemo show={showModal} closeModal={closeModal}/> {/* Memasukkan fungsi closeModal */}
+      <ModalDemo show={showModal} closeModal={closeModal} setShowModal={setShowModal} listdemo={listdemo}/> 
     </div>
   );
 };

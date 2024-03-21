@@ -16,9 +16,12 @@ const ModalDemo = (props) => {
 
   const handlesubmit = () => {
     axios.post("http://localhost:8080/api/demo", data).then((response)=>{
-      console.log(response.data)
+
+    props.listdemo()
       msg.success(response)
       setData({image:"", label:""})
+      props.setShowModal(false)
+
     }).catch((error)=>{
       msg.error(error)
     })
