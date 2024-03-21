@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import Register from "./components/page/register"
 import ChangePassword2 from './components/page/changepassword2';
-import store from './app/store'
-import { Provider } from 'react-redux'
+import Admin from './components/page/layout'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,7 +20,8 @@ root.render(
     {/* <Recover></Recover> */}
     {/* <Login></Login> */}
     <Provider store={store}>
-      <App />
+      {/* <App /> */}
+      <Admin/>
       {/* <Register /> */}
     </Provider>,
   </React.StrictMode>

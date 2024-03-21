@@ -16,15 +16,15 @@ function App() {
         <form>
 
         </form>
-        <input type="number" name="inputs" required="" value={input} onChange={e => setInput(e.target.value)}></input>
+        <input type="number" name="inputs" required="" value={inputValue} onChange={e => setInputValue(e.target.value)}></input>
         <div>
           <button
             aria-label="Increment value"
-            onClick={() => dispatch(incrementByAmount(Number(input)))}>+</button>
+            onClick={() => dispatch(incrementByAmount(Number(inputValue)))}>+</button>
           <span>{count}</span>
           <button
             aria-label="Decrement value"
-            onClick={() => dispatch(decrementByAmount(Number(input)))} disabled={count<=0}>-</button>
+            onClick={() => dispatch(decrementByAmount(Number(inputValue)))} disabled={count<=0}>-</button>
         </div>
         <p>
           Edit <code>src/App.js</code> and save to reload.
