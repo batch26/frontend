@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ModalDemo from "../../../organism/modal/demo";
-import "../../../../static/admin/assets/plugins/bootstrap/css/bootstrap.min.css";
-import "../../../../static/admin/assets//plugins/chartist-js/dist/chartist.min.css";
-import "../../../../static/admin/assets//plugins/chartist-js/dist/chartist-init.css";
-import "../../../../static/admin/assets//plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css";
-import "../../../../static/admin/assets//plugins/css-chart/css-chart.css";
-import "../../../../static/admin/assets//plugins/toast-master/css/jquery.toast.css";
+import { useEffect, useState } from "react";
 import "../../../../static/admin/css/style.css";
-import "../../../../static/admin/css/colors/blue.css";
+import "../../../../static/admin/assets/plugins/bootstrap/css/bootstrap.min.css";
+import ModalDemo from "../../../organism/modal/demo";
 import useMessage from "../../../hooks/useMessage";
 const Demo = () => {
   const [demo, setDemo] = useState([]);
