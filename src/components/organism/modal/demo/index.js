@@ -12,7 +12,7 @@ const ModalDemo = (props) => {
         label: ""
     })
     let msg = useMessage();
-    const listdemo = useSelector(state => state.demo.listdemo);
+
     const dispatch = useDispatch();
 
     const Handelchange = (e) => {
@@ -29,10 +29,10 @@ const ModalDemo = (props) => {
             msg.success(response)
             setData({ id: "", image: "", label: "" })
             props.setShowModal(false)
+            dispatch(getDemos());
 
         }).catch((error) => {
-            // msg.error(error);
-            dispatch(handleError(error));
+            msg.error(error)
         })
     }
 
