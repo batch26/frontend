@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import useMessage from "../../../hooks/useMessage";
+import { getDemos } from "../../../../features/demo";
 const ModalDemo = (props) => {
     const [data, setData] = useState({
         id: "",
@@ -16,9 +17,10 @@ const ModalDemo = (props) => {
     }
 
     const handlesubmit = () => {
-        const { id } = props.selectedDemo;
+        // const { id } = props.selectedDemo;
         axios.post("http://localhost:8080/api/demo", data).then((response) => {
-            props.listdemo()
+            props.dispatch(getDemos);
+            // props.listdemo();
             msg.success(response)
             setData({ id: "", image: "", label: "" })
             props.setShowModal(false)
@@ -43,6 +45,7 @@ const ModalDemo = (props) => {
             });
         }
     }, [props.selectedDemo]);
+    
 
     return (
         <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> {/* Menggunakan onHide untuk menutup modal saat tombol close ditekan */}
