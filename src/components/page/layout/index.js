@@ -319,5 +319,5 @@ const Index = () => {
         </body>
     )
 }
-export default Index;
 
+export default Index;
