@@ -6,6 +6,10 @@ import App from './App';
 import Landing from './components/page/landing';
 import reportWebVitals from './reportWebVitals';
 import Recover from "./components/page/recover";
+import Login from './components/page/login';
+import { Provider } from 'react-redux';
+import store from './app/store';
+import Register from "./components/page/register"
 import ChangePassword2 from './components/page/changepassword2';
 import store from './app/store'
 import { Provider } from 'react-redux'
@@ -15,6 +19,7 @@ import Demo from './components/page/admin/demo';
 import NotFound from './components/page/error/404';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
      <Provider store={store}>

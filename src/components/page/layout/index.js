@@ -62,25 +62,21 @@ let Index = () => {
                                             </li>
                                             <li>
                                                 <div className="message-center">
-
                                                     <a href="#">
                                                         <div className="btn btn-danger btn-circle"><i className="fa fa-link"></i></div>
                                                         <div className="mail-contnet">
                                                             <h5>Luanch Admin</h5> <span className="mail-desc">Just see the my new admin!</span> <span className="time">9:30 AM</span> </div>
                                                     </a>
-
                                                     <a href="#">
                                                         <div className="btn btn-success btn-circle"><i className="ti-calendar"></i></div>
                                                         <div className="mail-contnet">
                                                             <h5>Event today</h5> <span className="mail-desc">Just a reminder that you have event</span> <span className="time">9:10 AM</span> </div>
                                                     </a>
-
                                                     <a href="#">
                                                         <div className="btn btn-info btn-circle"><i className="ti-settings"></i></div>
                                                         <div className="mail-contnet">
                                                             <h5>Settings</h5> <span className="mail-desc">You can customize this template as you want</span> <span className="time">9:08 AM</span> </div>
                                                     </a>
-
                                                     <a href="#">
                                                         <div className="btn btn-primary btn-circle"><i className="ti-user"></i></div>
                                                         <div className="mail-contnet">
@@ -94,7 +90,6 @@ let Index = () => {
                                         </ul>
                                     </div>
                                 </li>
-
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="mdi mdi-email"></i>
                                         <div className="notify"> <span className="heartbit"></span> <span className="point"></span> </div>
@@ -124,7 +119,6 @@ let Index = () => {
                                                         <div className="mail-contnet">
                                                             <h5>Arijit Sinh</h5> <span className="mail-desc">I am a singer!</span> <span className="time">9:08 AM</span> </div>
                                                     </a>
-
                                                     <a href="#">
                                                         <div className="user-img"> <img src="../../../static/admin/assets/images/users/4.jpg" alt="user" className="img-circle" /> <span className="profile-status offline pull-right"></span> </div>
                                                         <div className="mail-contnet">
@@ -138,13 +132,11 @@ let Index = () => {
                                         </ul>
                                     </div>
                                 </li>
-
                                 <li className="nav-item dropdown mega-dropdown"> <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="mdi mdi-view-grid"></i></a>
                                     <div className="dropdown-menu animated bounceInDown">
                                         <ul className="mega-dropdown-menu row">
                                             <li className="col-lg-3 col-xlg-2 m-b-30">
                                                 <h4 className="m-b-20">CAROUSEL</h4>
-
                                                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                                                     <div className="carousel-inner" role="listbox">
                                                         <div className="carousel-item active">
@@ -203,7 +195,6 @@ let Index = () => {
                                             </li>
                                             <li className="col-lg-3  m-b-30">
                                                 <h4 className="m-b-20">CONTACT US</h4>
-
                                                 <form>
                                                     <div className="form-group">
                                                         <input type="text" className="form-control" id="exampleInputname1" placeholder="Enter Name" /> </div>
@@ -287,7 +278,6 @@ let Index = () => {
                                 </div>
                             </div>
                         </div>
-
                         <nav className="sidebar-nav">
                             <ul id="sidebarnav">
                                 <li className="nav-small-cap">PERSONAL</li>

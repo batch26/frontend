@@ -13,6 +13,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <form>
+
+        </form>
+        <input type="number" name="inputs" required="" value={inputValue} onChange={e => setInputValue(e.target.value)}></input>
+        <div>
+          <button
+            aria-label="Increment value"
+            onClick={() => dispatch(incrementByAmount(Number(inputValue)))}>+</button>
+          <span>{count}</span>
+          <button
+            aria-label="Decrement value"
+            onClick={() => dispatch(decrementByAmount(Number(inputValue)))} disabled={count<=0}>-</button>
+        </div>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
