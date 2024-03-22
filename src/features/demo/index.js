@@ -1,29 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const counterSlice = createSlice({
-  name: 'listDemo',
-  initialState: {
-
-  },
-  reducers: {
-    increment: (state) => {
-      
-        const listdemo = () => {
-            axios.get("http://localhost:8080/api/demos")
-              .then((response) => {
-                console.log(response.data)
-                setDemo(response.data.data);
-              })
-              .catch((error) => {
-        
-                console.log(error.response);
-              });
-          }
-    }
-}
+export const getDemos = createAsyncThunk("getDemos", () => {
+    return axios.get("http://localhost:8080/api/demos")
+    .then((response) => response.data.data)
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+const demoSlice = createSlice({
+    name: "listDemo",
+    initialState:{
+        data: null
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getDemos.fulfilled, (state,action) => {
+          state.data = action.payload;
+        })
+      }
+})
 
-export default counterSlice.reducer
+export default demoSlice.reducer;
+

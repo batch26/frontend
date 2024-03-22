@@ -5,6 +5,9 @@ import { setListDemo } from '../../admin/demo/demoSlice';
 import ModalDemo from "../../../organism/modal/demo";
 import Swal from 'sweetalert2';
 
+import useMessage from "../../../hooks/useMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { getDemos } from "../../../../features/demo";
 const Demo = () => {
     const [demo, setDemo] = useState([{}]);
     const [showModal, setShowModal] = useState(false);
@@ -96,15 +99,15 @@ const Demo = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {listdemo.map((data, index) => (
+                        {demos?.map((data, index) => (
                             <tr key={index}>
-                                <td>{data.id}</td>
+                                <td>{index + 1}</td>
                                 <td>{data.image}</td>
                                 <td>{data.label}</td>
                                 <td>
-                                    <button className="btn btn-warning" onClick={() => handleUpdate(data)}>EDIT</button>
+                                    <button className="btn btn-warning" onClick={() => getDemoById(data)}>EDIT</button>
                                     <span style={{ marginRight: '5px' }}></span>
-                                    <button className="btn btn-danger" onClick={() => handleDelete(data.id)}>DELETE</button>
+                                    <button className="btn btn-danger" onClick={() => deleteById(data.id)}>DELETE</button>
                                 </td>
                             </tr>
                         ))}

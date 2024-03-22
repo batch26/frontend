@@ -4,6 +4,7 @@ import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import useMessage from "../../../hooks/useMessage";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleError } from "../../../page/admin/demo/demoSlice";
+import { getDemos } from "../../../../features/demo";
 const ModalDemo = (props) => {
     const [data, setData] = useState({
         id: "",
@@ -21,13 +22,13 @@ const ModalDemo = (props) => {
     }
 
     const handlesubmit = () => {
-        // const { id } = props.editItemId;
+        // const { id } = props.selectedDemo;
         axios.post("http://localhost:8080/api/demo", data).then((response) => {
-            dispatch(listdemo);
-            msg.success(response);
-            
-            setData({ id: "", image: "", label: "" });
-            props.closeModal();
+            props.dispatch(getDemos);
+            // props.listdemo();
+            msg.success(response)
+            setData({ id: "", image: "", label: "" })
+            props.setShowModal(false)
 
         }).catch((error) => {
             // msg.error(error);
