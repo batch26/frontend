@@ -11,8 +11,6 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import Register from "./components/page/register"
 import ChangePassword2 from './components/page/changepassword2';
-import store from './app/store'
-import { Provider } from 'react-redux'
 import Layout from './components/page/layout';
 import Dashboard from './components/page/admin/dashboard';
 import Demo from './components/page/admin/demo';

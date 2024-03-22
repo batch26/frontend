@@ -2,13 +2,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import useMessage from "../../../hooks/useMessage";
+import { useSelector, useDispatch } from 'react-redux';
+import { handleError } from "../../../page/admin/demo/demoSlice";
 const ModalDemo = (props) => {
     const [data, setData] = useState({
         id: "",
         image: "",
         label: ""
     })
-    let msg = useMessage()
+    let msg = useMessage();
+    const listdemo = useSelector(state => state.demo.listdemo);
+    const dispatch = useDispatch();
+
     const Handelchange = (e) => {
         const { name, value } = e.target
 
@@ -16,24 +21,26 @@ const ModalDemo = (props) => {
     }
 
     const handlesubmit = () => {
-        const { id } = props.selectedDemo;
+        // const { id } = props.editItemId;
         axios.post("http://localhost:8080/api/demo", data).then((response) => {
-            props.listdemo()
-            msg.success(response)
-            setData({ id: "", image: "", label: "" })
-            props.setShowModal(false)
+            dispatch(listdemo);
+            msg.success(response);
+            
+            setData({ id: "", image: "", label: "" });
+            props.closeModal();
 
         }).catch((error) => {
-            msg.error(error)
+            // msg.error(error);
+            dispatch(handleError(error));
         })
     }
 
     useEffect(() => {
-        if (props.selectedDemo) {
+        if (props.editItemId) {
             setData({
-                id: props.selectedDemo.id,
-                image: props.selectedDemo.image,
-                label: props.selectedDemo.label
+                id: props.editItemId.id,
+                image: props.editItemId.image,
+                label: props.editItemId.label
             });
         } else {
             setData({
@@ -42,12 +49,12 @@ const ModalDemo = (props) => {
                 label: ""
             });
         }
-    }, [props.selectedDemo]);
+    }, [props.editItemId]);
 
     return (
         <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> {/* Menggunakan onHide untuk menutup modal saat tombol close ditekan */}
             <Modal.Header >
-                <Modal.Title>{props.selectedDemo ? 'EDIT DEMO' : 'ADD DEMO'}</Modal.Title>
+                <Modal.Title>{props.editItemId ? 'EDIT DEMO' : 'ADD DEMO'}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form.Group className={"mb-3"} style={{ display: "none" }}>
