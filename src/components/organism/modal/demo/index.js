@@ -4,6 +4,7 @@ import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import useMessage from "../../../hooks/useMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateData, UpdateId, getDemos, getDemosId } from "../../../../features/demo";
+import { apiUrl } from "../../../../custom/envcutom";
 const ModalDemo = (props) => {
     const [data, setData] = useState({
         id: "",
@@ -12,7 +13,7 @@ const ModalDemo = (props) => {
     })
     const dispatch = useDispatch();
     const demos = useSelector(state => state.listDemo.dataid)
-    console.log(demos, "dimodal")
+    // console.log(demos, "dimodal")
 
     let msg = useMessage()
 
@@ -22,22 +23,23 @@ const ModalDemo = (props) => {
         setData({ ...data, [name]: value })
     }
 
-    const getdetaildata = async() => {
-        try {
-           dispatch(getDemosId(props.selectedDemo))
-            setData({
-                id: demos.id,
-                image: demos.image,
-                label: demos.label
-            });
-        } catch (error) {
-
-        }
+    const getdetaildata = async (id) => {
+        axios.get(`${apiUrl}demo/${id}`).then((response)=>{
+            setData(
+                {
+                id:response.data.data.id, 
+                image:response.data.data.image, 
+                label:response.data.data.label
+            })
+        }).catch((error)=>{
+            console.log(error.response)
+            msg.error(error)
+        })
     };
 
     const handleSubmit = () => {
         if (data.id) {
-            axios.post(`http://localhost:8080/api/demo/${props.selectedDemo}`, data)
+            axios.post(`${apiUrl}/demo/${data.id}`, data)
                 .then((response) => {
                     dispatch(getDemos())
                     msg.success(response);
@@ -47,12 +49,12 @@ const ModalDemo = (props) => {
                 .catch((error) => {
                     msg.error(error);
                 });
-          
-            // dispatch(UpdateId({id:props.selectedDemo, data:data, setshow:props.setShowModal}))
+
+            
         } else {
 
-            // dispatch(CreateData({data:data , setshow:props.setShowModal , setData:setData} ))
-            axios.post("http://localhost:8080/api/demo", data)
+            // dispatch(CreateData({data:data} ))
+            axios.post(`${apiUrl}demo`, data)
                 .then((response) => {
                     dispatch(getDemos())
                     msg.success(response);
@@ -67,7 +69,7 @@ const ModalDemo = (props) => {
 
     useEffect(() => {
         if (props.selectedDemo) {
-        getdetaildata()
+            getdetaildata(props.selectedDemo)
         } else {
             setData({
                 id: "",

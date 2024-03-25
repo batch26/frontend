@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Admin from './components/page/layout/index.js'
+import Admin from './components/page/admin/layout/index.js'
 import Dashboard from './components/page/admin/dashboard/index.js';
 import Demo from './components/page/admin/demo/index.js';
 function App() {

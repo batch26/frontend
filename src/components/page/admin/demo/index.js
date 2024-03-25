@@ -14,7 +14,7 @@ const Demo = () => {
   let msg = useMessage()
   const dispatch = useDispatch();
   const demos = useSelector(state => state.listDemo.data)
-  let dataId ;
+  let dataId;
 
   // const listdemo =()=>{
   //     axios.get("http://localhost:8080/api/demos")
@@ -27,7 +27,7 @@ const Demo = () => {
   //       console.log(error.response);
   //     });
   // }
-  
+
 
   const openModal = () => {
     setShowModal(true);
