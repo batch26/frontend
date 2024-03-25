@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Button, ButtonGroup, Form, Modal } from "react-bootstrap";
 import useMessage from "../../../hooks/useMessage";
 import { getDemos } from "../../../../features/demo";
-import { UseDispatch, useSelector } from "react-redux";
 
 const ModalDemo = (props) => {
 
