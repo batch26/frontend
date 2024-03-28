@@ -83,7 +83,7 @@ const Demo = () => {
                     ))}
                 </tbody>
             </table>
-            <ModalDemo show={showModal} closeModal={closeModal} setShowModal={setShowModal} selectedDemo={selectedDemo} listdemo={listdemo} dispatch={dispatch}/>
+            <ModalDemo show={showModal} closeModal={closeModal} setShowModal={setShowModal} selectedDemo={selectedDemo} dispatch={dispatch}/>
         </div>
     )
 }
